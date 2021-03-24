@@ -29,6 +29,7 @@
             </HBox>
             <Button fx:id="btnCancella" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#doDeleteWord" text="Cancella" />
             <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+            <TextArea fx:id="txtTime" />
          </children>
       </VBox>
    </center>

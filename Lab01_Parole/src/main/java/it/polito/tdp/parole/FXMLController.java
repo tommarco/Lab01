@@ -29,6 +29,10 @@ public class FXMLController {
 
     @FXML
     private TextArea txtResult;
+    
+    @FXML
+    private TextArea txtTime;
+
 
     @FXML
     private Button btnReset;
@@ -36,10 +40,29 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	
+    	String s="";
     
     	String parola= txtParola.getText();
+    	double	opPrimo= System.nanoTime();
     	elenco.addParola(parola);
-    	txtResult.appendText(elenco.getElenco()+"\n");
+    	
+    		
+    			
+    		for(String p: elenco.getElenco()) {
+    		
+    				s+=p+"\n";
+    				
+    
+    				
+ 	
+    			
+    		}
+    		txtResult.setText(s);
+    		
+    		
+    		txtTime.setText(Double.toString(opPrimo)+"\n");
+    		
+    	//txtResult.appendText(elenco.getElenco()+"\n");
     	
     	
     	
@@ -53,9 +76,29 @@ public class FXMLController {
     @FXML
     void doDeleteWord(ActionEvent event) {
     	
-    	String parola= txtParola.getSelectedText();
-    	elenco.delete(parola);
-    	txtResult.appendText(elenco.getElenco()+"\n");
+    	String s="";
+    
+    String parola= txtResult.getSelectedText();
+    double opSecondo= System.nanoTime();
+    elenco.delete(parola);
+    
+    txtResult.clear();
+	
+	
+	for(String p: elenco.getElenco()) {
+	
+			s+=p+"\n";
+			
+
+			
+
+		
+	}
+	txtResult.setText(s);
+	
+	txtTime.setText(Double.toString(opSecondo));
+	
+	
 
     }
 
@@ -66,6 +109,7 @@ public class FXMLController {
     	
     //	txtResult.appendText(Integer.toString(elenco.getElenco().size()));
     	
+    	txtTime.clear();
     	
     	// TODO
     }
